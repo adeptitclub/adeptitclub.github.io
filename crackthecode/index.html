@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crack the Code - Ojas 2018</title>
+  <style>
+    body {
+      width: 800px;
+      margin: auto;
+      background-color: #fff;
+      line-height: 30px;
+    }
+    p {
+      margin-bottom: 4em;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      padding-bottom: 0;
+      text-transform: uppercase;
+      font-family: sans-serif;
+    }
+    div#content {
+      padding: 20px;
+      padding-top: 0;
+    }
+    div#content>ol>li {
+      white-space: pre-line;
+    }
+    html {
+      background-color: #ddd;
+    }
+    code{
+      white-space: pre;
+    }
+    footer {
+      text-transform: uppercase;
+      font-family: sans-serif;
+      font-weight: bold;
+      text-align: center;
+      background: #ebd58f;
+      margin-bottom: -1em;
+    }
+    span#club{
+      color: #496eeb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Crack the Code - Ojas 2018</h1>
+    <h3>Bhilai Institute of Technology, Durg</h3>
+  </header>
+  <div id="content">
+    <ol>
+      <li>Given an array of integers, create a function to sort the elements of the array in decreasing order of number of ones in binary representation of each element. If two numbers have equal number of 1s in their binary representation, then the number which appeared first in the original array must appear first in the sorted array.
+
+        For example, if the original array contains
+        <samp>32, 54, 90, 87, 76, 21</samp>
+
+      The output will be
+      <samp>87, 54, 90, 76, 21, 32</samp>
+
+      Explanation: 
+      Each number and its binary representation is as below <code>
+      Number      Binary      Number of 1s
+      32          00100000        1
+      54          00110110        4
+      90          01011010        4
+      87          01010111        5
+      76          01001100        3
+      21          00010101        3
+      </code> 
+      So, sorted array in decreasing order of number of 1s will be
+      <code>87, 54, 90, 76, 21, 32</code>
+
+
+      </li>
+      <li>Thor of Asgard has been assigned the task of finding the lost tesseract by his father Odin.  He has travelled 8 realms but did not find the tesseract anywhere. Finally, he heads towards the 9th realm, Midgard (Earth). In Midgard, he seeks help of Dr. Strange in finding the tesseract. Dr. Strange gives him a list of locations where the tesseract possibly could be.  However, the list looks a bit strange to Thor and he has trouble understanding the Midgardian address format. Your task is to convert the Midgardian addresses into Asgardian address format so that Thor can understand them. If you are able to help him find the tesseract, he might recommend you for a position in the team Avengers. Good Luck.
+
+      Given a text file <a href="midgardian_addresses.txt">midgardian_addresses.txt</a> which contains street addresses in the given format
+      <code> &lt;street details&gt;, &lt;city name&gt;, &lt;zip code&gt; </code>
+
+      Create a new file asgardian_addresses.txt which contains addresses in the format
+      <code>&lt;city name&gt; - &lt;zip code&gt;</code>
+
+      Conditions: <ul> <li> Each address in the file is in it own separate line.  </li> <li> Maximum length of an address is 255 characters.  </li> <li> Maximum length of city name is 20 characters.  </li> <li> Zip codes are always 6 digits.  </li> <li> The format of street details can vary.  </li> </ul> <p> Example:
+      If the input file contains following addresses: <code>
+      Wayne Manor, Gotham, 132468
+      203, Avengers Tower, New York, 324546 </code>
+
+      The result file will contain: <code>
+      Gotham - 132468
+      New York - 324546 </code>
+    </p>
+      </li>
+    </ol>
+  </div>
+  <footer><h3><big>A</big>dept <big>IT</big> <span id='club'><big>C</big>lub<span></h3></footer>
+</body>
+</html>
