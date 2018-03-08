@@ -26,10 +26,27 @@
     <link href="css/creative.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png" />
 
-
   </head>
 
   <body id="page-top">
+
+    <div class="modal fade" id="vt-banner-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body" style="padding:0; text-align:center">
+            <img src="img/vt-combined.png" alt="Vocational training in Python and PHP">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade " id="mm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          ...
+        </div>
+      </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -275,6 +292,11 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#vt-banner-modal').modal('show');
+      });
+    </script>
 
   </body>
 
