@@ -42,8 +42,8 @@
               <!-- <div class="col-sm-12">
                 <h4 style="background:#496eeb; color:#ebd58f">Vocational Training - 2018</h4>
               </div> -->
-              <div class="col-sm-6">
-                <h5 style="color: #496eeb;">Programming in Python</h5>
+              <div class="col">
+                <h6 style="color: #496eeb;">Course 1: Programming in Python</h6>
                 <ul class="text-left">
                   <li>Introduction</li>
                   <li>Python2 vs Python3</li>
@@ -54,8 +54,8 @@
                   <li>Introduction to Django/OpenCV/Tensorflow</li>
                 </ul>
               </div>
-              <div class="col-sm-6">
-                <h5 style="color: #496eeb;">Fullstack web development with PHP</h5>
+              <div class="col">
+                <h6 style="color: #496eeb;">Course 2: Fullstack web development with PHP</h6>
                 <ul class="text-left">
                   <li>HTML</li>
                   <li>JavaScript, CSS3</li>
@@ -64,6 +64,22 @@
                   <li>Object Oriented Programming in PHP</li>
                   <li>MySQL</li>
                   <li>PDO</li>
+                  <li>Security in web applications</li>
+                </ul>
+              </div>
+              <div class="col">
+                <h6 style="color: #496eeb;">Course 3: Linux Server Administration</h6>
+                <ul class="text-left">
+                  <li>Introduction and history</li>
+                  <li>Installation</li>
+                  <li>Filesystem structure</li>
+                  <li>File operations</li>
+                  <li>User and group management</li>
+                  <li>Package management</li>
+                  <li>Networking</li>
+                  <li>Installation and configuration of servers</li>
+                  <li>Process management</li>
+                  <li>Scripting with bash</li>
                 </ul>
               </div>
               <div class="col-sm-12">
@@ -75,6 +91,10 @@
                   <li>Insight into modern software engineering practices</li>
                 </ul>
               </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col text-primary"><p> For more information call us on 8130715047, 9918366501</p></div>
+              <!--<div class="col-sm-6"><p>Or <a href="query.php">leave us a query</a></p></div> -->
             </div>
           </div>
         </div>
@@ -291,14 +311,14 @@
       </div>
     </section>
 
-    <section class="bg-dark text-white">
+    <section class="bg-dark text-white p-5">
       <div class="container text-center">
         <h2 class="mb-4">Free demo classes</h2>
         <a class="btn btn-light btn-xl sr-button" href="tel:8130715047">Call now!</a>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="p-5">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -327,6 +347,31 @@
         </div>
       </div>
     </section>
+    <section class="p-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Or send us a query</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+        <form id="query-form">
+          <div class="form-group">
+            <label for="username">Name</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="contact-input">Email address or mobile number</label>
+            <input type="text" class="form-control" id="contact-input" name="contact" placeholder="Your contact information so that we can respond to your query">
+          </div>
+          <div class="form-group">
+            <label for="query">Query</label>
+            <textarea id="query" class="form-control" name="query" cols="30" rows="10" placeholder="Your query"></textarea>
+          </div>
+          <button type="submit" id="submit-query" class="btn btn-primary">Submit Query</button>
+        </form>
+      </div>
+    </section>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -340,8 +385,76 @@
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
     <script>
+      function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      function validateName(name) {
+        const re = /^[a-z]{1,}[a-z ]{0,}[a-z]{3,}$/;
+        return re.test(String(name).toLowerCase());
+      }
+
+      function validateQuery(query) {
+        return String(query).length > 10;
+      }
+
+      function validatePhone(phone) {
+        var re = /^[789][0-9]{9}$/;
+        return re.test(phone);
+      }
+
       $(document).ready(function() {
         $('#vt-banner-modal').modal('show');
+      });
+
+      $('#query-form').on('submit', function(e) {
+        e.preventDefault();
+
+        const contactInput = $('#contact-input');
+        const contact = contactInput.val();
+        const nameInput = $('#username');
+        const name = nameInput.val();
+        const queryInput = $('#query');
+        const query = queryInput.val();
+        let valid = true;
+
+        if(!(validateEmail(contact) || validatePhone(contact))) {
+          valid = false;
+          contactInput.addClass('is-invalid');
+        } else {
+          contactInput.removeClass('is-invalid');
+        }
+
+
+        if(!validateName(name)) {
+          nameInput.addClass('is-invalid');
+          valid = false;
+        } else {
+          nameInput.removeClass('is-invalid');
+        }
+
+        if(!validateQuery(query)) {
+          queryInput.addClass('is-invalid');
+          valid = false;
+        } else {
+          queryInput.removeClass('is-invalid');
+        }
+
+        if(valid) {
+          var formData = new FormData(document.querySelector('#query-form'));
+          console.log(formData);
+          $.ajax('query.php', {
+            data: formData,
+            method: 'post',
+            processData: false,
+            contentType: false,
+          }).done(function(response) {
+            console.log(response);
+          }).fail(function(status, message) {
+            console.error(status, message);
+          });
+        }
       });
     </script>
 
