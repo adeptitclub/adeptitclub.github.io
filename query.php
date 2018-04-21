@@ -16,7 +16,7 @@ function create_email_entry($username, $contact, $userquery) {
     exit();
   }
 
-  $result =  $query->execute(array(
+  $result =  $statement->execute(array(
     ':username' => $username,
     ':query' => $userquery,
     ':contact' => $contact,
