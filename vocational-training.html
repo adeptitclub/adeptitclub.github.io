@@ -36,7 +36,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" style="text-align:center">
+          <div class="modal-body" style="padding:0; text-align:center">
             <!-- <img src="img/vt-combined.png" alt="Vocational training in Python and PHP"> -->
             <div class="row">
               <!-- <div class="col-sm-12">
@@ -48,7 +48,6 @@
                   <li>Introduction</li>
                   <li>Python2 vs Python3</li>
                   <li>Python programming core</li>
-                  <li>Object oriented programming in Python</li>
                   <li>Python virtual environments</li>
                   <li>Package management in Python</li>
                   <li>Creating and hosting packages</li>
@@ -95,7 +94,6 @@
             </div>
             <div class="row mt-3">
               <div class="col text-primary"><p> For more information call us on 8130715047, 9981366501 or <a class="text-underline" href="#send-query">send us a query</a></p></div>
-              <div class="col text-primary"><h2>Batches starting 4<sup>th</sup> June 2018</h2></div>
               <!--<div class="col-sm-6"><p>Or <a href="query.php">leave us a query</a></p></div> -->
             </div>
           </div>
@@ -103,21 +101,10 @@
       </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="query-success-modal">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade " id="mm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Thank you for your query!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>We will get back to you shortly.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          </div>
+          ...
         </div>
       </div>
     </div>
@@ -159,13 +146,43 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong>We love code</strong>
+              Linux is everywhere
             </h1>
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">Do you? If yes, then get in touch to learn something new.</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-cloud text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Cloud</h3>
+              <p class="text-muted mb-0">Our batches are small so that you don't miss out in the crowd.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-laptop text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Laptop</h3>
+              <p class="text-muted mb-0">Over 5 years of experience with organizations like IIT, Delhi and DBS, Singapore.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-microchip text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">IoT</h3>
+              <p class="text-muted mb-0">Up to date with latest tools and technologies used in the industry</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-server text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Server</h3>
+              <p class="text-muted mb-0">Be it coding or teaching, we love the work we do.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -417,11 +434,12 @@
         return re.test(phone);
       }
 
-      // $(document).ready(function() {
-      //   $('#vt-banner-modal').modal('show');
-      // });
+      $(document).ready(function() {
+        $('#vt-banner-modal').modal('show');
+      });
 
       $('#query-form').on('submit', function(e) {
+        const $this = $(this);
         e.preventDefault();
 
         const contactInput = $('#contact-input');
@@ -463,11 +481,11 @@
             processData: false,
             contentType: false,
           }).done(function(response) {
-            console.log(response);
-            $('#query-success-modal').modal('show');
+            console.log($this);
           }).fail(function(status, message) {
+            console.log($this);
+            $this.css('visibility', 'hidden');
             console.error(status, message);
-            $('#query-success-modal').modal('show');
           });
         }
       });
